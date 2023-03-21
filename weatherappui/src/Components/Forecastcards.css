@@ -1,0 +1,13 @@
+.mid{
+    position: absolute;
+    top: 20%;
+    right: 5%;
+}
+
+.entirecard{
+    border-radius: 10px;
+}
+
+.titlecard{
+    text-align: center;
+}

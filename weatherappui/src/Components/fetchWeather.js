@@ -16,14 +16,20 @@ export const fetchWeather = async (query) => {
     } ).catch(err => console.log(err));
     return data;
 }
-export const fetchForecast = async (query) => {
+
+
+
+
+export const fetchForecast = async (lat, lon) => {
     const { data } = await axios.get(FORECAST_URL_API, {
         params: {
-            lat:query.coord.lat.toFixed(2),
-            lon:query.coord.lon.toFixed(2),
+            lat:lat.toFixed(2),
+            lon:lon.toFixed(2),
             appid: API_KEY,
         }
     }
     ).catch(err => console.log(err));
+    // console.log (data)
     return data;
+
 }

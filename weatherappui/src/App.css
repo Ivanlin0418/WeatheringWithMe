@@ -8,8 +8,6 @@ html, body, #root {
     margin: 0;
 }
 
-
-
 .main-container {
     height: 100%;
     display: flex;

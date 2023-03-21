@@ -1,66 +1,67 @@
-import { fetchForecast } from "./fetchWeather";
-import ForecastCards from "./ForecastCards";
-import React from "react";
+import { fetchForecast } from "./Fetchweather";
+import React, { Component } from "react";
+import Forecastcards from "./Forecastcards";
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
-class Forecast extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            forecastData: [],
-            error: null,
-        };
+class Forecast extends Component {
+  state = {
+    forecastData: [],
+    error: null,
+  };
+
+  async componentDidMount() {
+    const { WeatherData } = this.props;
+
+    try {
+      const data = await fetchForecast(WeatherData.coord.lat, WeatherData.coord.lon);
+      const forecastData = [];
+
+      for (let i = 0; i < 5; i++) {
+        const startIndex = i * 8;
+        const endIndex = startIndex + 8;
+        const dayData = data.list.slice(startIndex, endIndex);
+        forecastData.push(dayData);
+      }
+
+      this.setState({ forecastData });
+    } catch (error) {
+      this.setState({ error: error.message });
     }
+  }
 
-    UpdateData = () => {
-        fetchForecast(this.props.ForecastData)
-            .then((data) => {
-                const ForecastData = [];
-                for (let i = 0; i < 5; i++) {
-                    const startIndex = i * 8;
-                    const endIndex = startIndex + 8;
-                    const dayData = data.list.slice(startIndex, endIndex);
-                    ForecastData.push(dayData);
-                }
-                this.setState({ forecastData: ForecastData });
-            })
-            .catch((error) => {
-                this.setState({ error: error.message });
-            });
-    }
+  async componentDidUpdate(prevProps) {
+    const { WeatherData } = this.props;
 
-    ProcessData = () => {
-        const unfiltered_data = this.state.forecastData
-        const filtered_data = unfiltered_data.map((data) => {
-            data.weather[0].description
-        })
-        return filtered_data
-    }
+    // Only fetch new data if the weather data has changed
+    if (prevProps.WeatherData !== WeatherData) {
+      try {
+        const data = await fetchForecast(WeatherData.coord.lat, WeatherData.coord.lon);
+        const forecastData = [];
 
-
-    componentDidMount() {
-        this.UpdateData()
-    }
-
-
-    render() {
-        const error = this.state.error;
-        if (error) {
-            // console.log(error);
+        for (let i = 0; i < 5; i++) {
+          const startIndex = i * 8;
+          const endIndex = startIndex + 8;
+          const dayData = data.list.slice(startIndex, endIndex);
+          forecastData.push(dayData);
         }
-        console.log(this.state.forecastData[0]);
-        console.log(this.state.forecastData[0]);
 
-        return (
-            <div>
-                <p></p>
-                <ForecastCards Daily={this.state.forecastData[0]} />
-                {/*<ForecastCards forecast={this.state.forecastData[1]} />*/}
-                {/*<ForecastCards forecast={this.state.forecastData[2]} />*/}
-                {/*<ForecastCards forecast={this.state.forecastData[3]} />*/}
-                {/*<ForecastCards forecast={this.state.forecastData[4]} />*/}
-            </div>
-        );
+        this.setState({ forecastData });
+      } catch (error) {
+        this.setState({ error: error.message });
+      }
     }
+  }
+
+  render() {
+    const { forecastData } = this.state;
+    return (
+      <div>
+        {forecastData.map((dayData, index) => (
+          <Forecastcards key={index} dayData={dayData} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default Forecast;

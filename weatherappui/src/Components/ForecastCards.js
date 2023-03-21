@@ -1,35 +1,44 @@
-import React, { Component } from 'react';
+import { React, useCallback } from "react";
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import './Forecastcards.css'
 
-class ForecastCards extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            weatherData: [],
-        };
+const Forecastcards = ({ dayData, onCardClick }) => {
+
+  const handleCardClick = useCallback(() => {
+    if (typeof onCardClick === 'function') {
+      onCardClick();
     }
+  }, [onCardClick]);
 
-    getWeather = () => {
-        const unfiltered = this.props.Daily
-        const filtered = []
-        console.log(unfiltered)
-        // const c = unfiltered.map((data) => {
-        //     data.weather[0].description
-        // })
-    };
+  const { timezone } = dayData[0].sys;
 
-    decideWeather = (e) => {
-        console.log(e);
-    };
+  return (
+    <div class="mid">
+      <Card style={{width: '20rem'}} onClick={handleCardClick} class="entirecard" >
+        <CardTitle tag="h5" class="text-justify">
+          {new Date(dayData[0].dt_txt).toLocaleDateString()}
+        </CardTitle>
 
-    render() {
-        console.log(this.props.Daily);
-        return (
-            <div>
-                <p>{this.getWeather()}</p>
-                <p>hi</p>
-            </div>
-        );
-    }
-}
+        <div className="d-flex flex-column">
+          <ListGroup flush horizontal>
+            {dayData.map((data) => {
+              const date = new Date(data.dt_txt);
+              const options = { timeZone: timezone, hour: 'numeric', hour12: true };
+              return (
+                <div className="col">
+                  <ListGroupItem className="p-1 bg-light border">
+                    Time: {date.toLocaleTimeString([], options)} <br/>
+                    Temperature: {Math.round((data.main.temp - 273.15) * 9/5 + 32)}<sup>&deg;F</sup>  <br></br>  
+                    Weather: {data.weather[0].description}
+                  </ListGroupItem>
+                </div>
+              );
+            })}
+          </ListGroup>
+        </div>
+      </Card>
+    </div>
+  );
+};
 
-export default ForecastCards;
+export default Forecastcards;
