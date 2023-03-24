@@ -1,11 +1,10 @@
 html, body, #root {
     font-family: "Georgia";
-    background-image: url('https://wallpapercave.com/wp/wp5939168.jpg');
     font-size: 14px;
     color: #1e2432;
     height: 100%;
-    text-shadow: 2px 2px 3px mediumpurple;
     margin: 0;
+    overflow: hidden;
 }
 
 .main-container {
@@ -14,6 +13,8 @@ html, body, #root {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-shadow: 2px 2px 3px mediumpurple;
+
 }
 
 .search {
@@ -34,7 +35,7 @@ html, body, #root {
     flex-direction: column;
     padding: 40px 8%;
     border-radius: 20px;
-    background: rgba(250, 250, 250, 0.85);
+    background: rgba(232, 247, 248, 0.85);
 }
 
 p {

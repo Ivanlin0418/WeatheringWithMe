@@ -1,12 +1,13 @@
 import { fetchForecast } from "./Fetchweather";
 import React, { Component } from "react";
 import Forecastcards from "./Forecastcards";
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import {  Button } from 'reactstrap';
 
 class Forecast extends Component {
   state = {
     forecastData: [],
     error: null,
+    currentIndex: 0, 
   };
 
   async componentDidMount() {
@@ -32,7 +33,6 @@ class Forecast extends Component {
   async componentDidUpdate(prevProps) {
     const { WeatherData } = this.props;
 
-    // Only fetch new data if the weather data has changed
     if (prevProps.WeatherData !== WeatherData) {
       try {
         const data = await fetchForecast(WeatherData.coord.lat, WeatherData.coord.lon);
@@ -52,13 +52,21 @@ class Forecast extends Component {
     }
   }
 
+  handleButtonClick = () => {
+    this.setState(prevState => {
+      const currentIndex = (prevState.currentIndex + 1) % 5;
+      return { currentIndex };
+    });
+  };
+
   render() {
-    const { forecastData } = this.state;
+    const { forecastData, currentIndex } = this.state;
+    const currentDayData = forecastData[currentIndex];
     return (
       <div>
-        {forecastData.map((dayData, index) => (
-          <Forecastcards key={index} dayData={dayData} />
-        ))}
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
+        </div>
+        <Forecastcards dayData={currentDayData} onClick={this.handleButtonClick} />
       </div>
     );
   }

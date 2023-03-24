@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { fetchWeather } from './Components/Fetchweather';
 import Forecast from './Components/Forecast';
@@ -7,14 +7,14 @@ import axios from 'axios';
 const App = () => {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-  const [backgroundImage, setBackgroundImage] = useState('');
+  const [backgroundImage, setBackgroundImage] = useState('url(https://wallpapercave.com/wp/wp5939168.jpg)');
 
   const fetchWeatherData = async (q) => {
     const weatherData = await fetchWeather(q);
 
     const city = weatherData.name;
     const API_KEY = 'hBl7BeTXO8UrmjW5vTQlbS2ypUVMU16suUIyc1WYReto1Ov0Zq1YZVgy';
-    const response = await axios.get(`https://api.pexels.com/v1/search?query=${city}&per_page=1`, {
+    const response = await axios.get(`https://api.pexels.com/v1/search?query=${city+weatherData.weather[0].description}&per_page=1`, {
       headers: {
         Authorization: API_KEY
       }
@@ -56,10 +56,10 @@ const App = () => {
             {Math.round(weather.main.temp * 1.8 + 32)}
             <sup>&deg;F</sup>
           </div>
-          <div className="Feels Like">
+          <div >
             <p>
               Feels Like {Math.round(weather.main.feels_like * 1.8 + 32)}
-              <sup>&deg;F</sup>
+              <sup className="city-temp">&deg;F</sup>
             </p>
           </div>
           <div className="info">

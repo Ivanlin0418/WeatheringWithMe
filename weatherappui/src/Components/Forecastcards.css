@@ -1,13 +1,28 @@
-.mid{
-    position: absolute;
-    top: 20%;
-    right: 5%;
-}
 
-.entirecard{
-    border-radius: 10px;
-}
+  .WeatherIcon{
+    width: 80px;
+  }
+  
+  .IndividualCells{
+    height:60px;
+  }
+  
 
-.titlecard{
-    text-align: center;
-}
+  .mid{
+    text-shadow: 2px 2px 3px rgb(91, 150, 140);
+
+  }
+  
+  #Card{
+    width: 100%;
+    font-family : 'monospace';
+    font-smooth : 'always';
+    background-color : '#a9dce3';
+    margin: '0 auto';
+    
+  }
+
+  #H5{
+    text-shadow: 2px 2px 3px rgb(26, 205, 142);
+
+  }
