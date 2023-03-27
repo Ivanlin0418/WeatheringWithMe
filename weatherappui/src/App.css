@@ -79,3 +79,28 @@ p {
     flex-direction: column;
     align-items: center;
 }
+
+@media only screen and (max-width: 767px) {
+    .fixed-size-list {
+    width: 100%;
+    height: 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    }
+    .ItemInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+    .IndividualCells {
+    flex-basis: 25%;
+    flex-grow: 0;
+    margin-bottom: 10px;
+    }
+    .WeatherDiv {
+    margin-top: 5px;
+    }
+    }

@@ -1,7 +1,6 @@
 import { fetchForecast } from "./Fetchweather";
 import React, { Component } from "react";
 import Forecastcards from "./Forecastcards";
-import {  Button } from 'reactstrap';
 
 class Forecast extends Component {
   state = {

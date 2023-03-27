@@ -16,9 +16,9 @@ const Forecastcards = ({ dayData, onClick }) => {
   }
 
   return (
-    <div onClick={handleonClick}>
-      <Card title="CardInfo" className="rounded-3">
-        <CardTitle className="TitleDiv">
+    <div onClick={handleonClick} className="forecast-card-container">
+      <Card>
+        <CardTitle className="cardTitleDiv">
           <h5 className="TitleText">
             {date} ({weekday})
           </h5>
@@ -30,7 +30,7 @@ const Forecastcards = ({ dayData, onClick }) => {
               const options = { timeZone: timezone, hour: 'numeric', hour12: true };
               return (
                 <div className="col">
-                  <ListGroupItem className="p-1 bg-light border IndividualCells">
+                  <ListGroupItem className="p-1 bg-light border w-100 IndividualCells">
                     <div className="ItemInfo">
                       <h5 className="DateText">{date.toLocaleTimeString([], options)}</h5>
                       <div className="TempDiv">

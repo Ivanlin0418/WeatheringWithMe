@@ -1,6 +1,16 @@
+.forecast-card-container {
+  margin: 0;
+  padding: 0;
+}
+
+.forecast-card {
+  margin: 0;
+  padding: 0;
+}
+
 .IndividualCells {
   color: #7689de;
-  height: 130px;
+  height: 100%;
   flex-grow: 1;
   width: 101px;
 }
@@ -19,10 +29,10 @@
   margin: 0 auto;
 }
 
-.TitleDiv {
-  height: 21px;
-}
 
+.cardTitleDiv{
+  height: 15px;
+}
 .TitleText {
   text-align: center;
   font-size: 20px;
@@ -34,45 +44,45 @@
 .ItemInfo {
   display: flex;
   justify-content: space-between; 
-  align-items: center; 
-  flex-grow: 1; 
+  align-items: center;
+flex-grow: 1;
 }
 
 .DateText {
-  display: inline-flex;
-  font-size: 12px;
-  color: #7689de;
-  flex: 1;
+display: inline-flex;
+font-size: 12px;
+color: #7689de;
+flex: 1;
 }
 
 .TempDiv {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
 }
 
 .TemperatureText {
-  display: inline-block;
-  margin-bottom: 0px;
-  font-size: 12px;
-  color: #7689de;
-  margin-left: 10px;
+display: inline-block;
+margin-bottom: 0px;
+font-size: 12px;
+color: #7689de;
+margin-left: 10px;
 }
 
 .WeatherDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -25px;
-  text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: -25px;
+text-align: center;
 }
 
 .WeatherText {
-  font-size: 16px;
-  margin: -7px;
-  color: #7689de;
-  white-space: pre-wrap;
+font-size: 16px;
+margin: -7px;
+color: #7689de;
+white-space: pre-wrap;
 }
 
 .city-icon {
-  width: 80px;
+width: 80px;
 }
