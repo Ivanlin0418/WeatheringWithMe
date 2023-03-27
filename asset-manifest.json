@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/WeatherNexus/static/css/main.7eb4686b.css",
+    "main.js": "/WeatherNexus/static/js/main.01c54966.js",
+    "index.html": "/WeatherNexus/index.html",
+    "main.7eb4686b.css.map": "/WeatherNexus/static/css/main.7eb4686b.css.map",
+    "main.01c54966.js.map": "/WeatherNexus/static/js/main.01c54966.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7eb4686b.css",
+    "static/js/main.01c54966.js"
+  ]
+}
