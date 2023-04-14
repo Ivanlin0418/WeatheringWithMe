@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { fetchWeather } from './Components/Fetchweather';
+import { fetchWeather } from './Components/FetchWeather';
 import Forecast from './Components/Forecast';
 import axios from 'axios';
 

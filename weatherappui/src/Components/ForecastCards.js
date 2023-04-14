@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardTitle, ListGroup, ListGroupItem } from 'reactstrap';
-import './Forecastcards.css';
+import './ForecastCards.css';
 
 const Forecastcards = ({ dayData, onClick }) => {
   if (!dayData || !dayData[0]) {

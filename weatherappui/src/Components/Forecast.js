@@ -1,6 +1,6 @@
-import { fetchForecast } from "./Fetchweather";
+import { fetchForecast } from "./FetchWeather";
 import React, { Component } from "react";
-import Forecastcards from "./Forecastcards";
+import Forecastcards from "./ForecastCards";
 
 class Forecast extends Component {
   state = {
