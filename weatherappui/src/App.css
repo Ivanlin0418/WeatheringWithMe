@@ -52,6 +52,17 @@ p {
     text-align: center;
 }
 
+
+
+.FeelsLike{
+
+    font-family: 'Times New Roman', Times, serif;
+
+    font-size: 18px;
+
+}
+
+
 .city sup {
     font-size: 0.5em;
 }

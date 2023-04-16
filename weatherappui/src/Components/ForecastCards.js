@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardTitle, ListGroup, ListGroupItem } from 'reactstrap';
 import './ForecastCards.css';
 
-const Forecastcards = ({ dayData, onClick }) => {
+const ForecastCards = ({ dayData, onClick }) => {
   if (!dayData || !dayData[0]) {
     return null;
   }
@@ -11,13 +11,13 @@ const Forecastcards = ({ dayData, onClick }) => {
   const date = new Date(dayData[0].dt_txt).toLocaleDateString();
   const weekday = new Date(dayData[0].dt_txt).toLocaleDateString(undefined, { weekday: 'long' });
 
-  const handleonClick = () => {
-    onClick()
-  }
+  const handleOnClick = () => {
+    onClick();
+  };
 
   return (
-    <div onClick={handleonClick} className="forecast-card-container">
-      <Card>
+    <div onClick={handleOnClick} className="forecast-card-container">
+      <Card className="CardInfo">
         <CardTitle className="cardTitleDiv">
           <h5 className="TitleText">
             {date} ({weekday})
@@ -29,7 +29,7 @@ const Forecastcards = ({ dayData, onClick }) => {
               const date = new Date(data.dt_txt);
               const options = { timeZone: timezone, hour: 'numeric', hour12: true };
               return (
-                <div className="col">
+                <div key={data.dt} className="col">
                   <ListGroupItem className="p-1 bg-light border w-100 IndividualCells">
                     <div className="ItemInfo">
                       <h5 className="DateText">{date.toLocaleTimeString([], options)}</h5>
@@ -55,4 +55,4 @@ const Forecastcards = ({ dayData, onClick }) => {
   );
 };
 
-export default Forecastcards;
+export default ForecastCards;

@@ -57,7 +57,7 @@ const App = () => {
             <sup>&deg;F</sup>
           </div>
           <div >
-            <p>
+            <p className='FeelsLike'>
               Feels Like {Math.round(weather.main.feels_like * 1.8 + 32)}
               <sup className="city-temp">&deg;F</sup>
             </p>
@@ -73,6 +73,9 @@ const App = () => {
           </div>
         </div>
       )}
+
+
+
       {weather.main && <Forecast WeatherData={weather}/>}
     </div>
   );
